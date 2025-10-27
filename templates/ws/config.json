@@ -1,0 +1,35 @@
+{{
+    "dns": {{
+        "servers": [
+            "8.8.8.8",
+            "1.1.1.1",
+            "localhost"
+        ]
+    }},
+    "inbounds": [
+        {{
+            "port": 8000,
+            "protocol": "vmess",
+            "settings": {{
+                "clients": []
+            }},
+            "streamSettings": {{
+                "network": "ws",
+                "wsSettings": {{
+                    "path": "{path}"
+                }}
+            }}
+        }}
+    ],
+    "log": {{
+        "access": "/var/log/xray/access.log",
+        "error": "/var/log/xray/error.log",
+        "loglevel": "warning"
+    }},
+    "outbounds": [
+        {{
+            "protocol": "freedom",
+            "tag": "direct"
+        }}
+    ]
+}}

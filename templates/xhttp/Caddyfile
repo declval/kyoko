@@ -1,0 +1,16 @@
+{{
+	admin off
+	default_sni {domain}
+}}
+
+{domain} {{
+	root /srv
+
+	reverse_proxy {path}/* xray:8000
+
+	file_server
+
+	log {{
+		output file /var/log/caddy/access.log
+	}}
+}}

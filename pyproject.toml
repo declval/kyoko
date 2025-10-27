@@ -1,0 +1,9 @@
+[project]
+name = "kyoko"
+version = "0.1.0"
+dependencies = [
+  "ruff",
+]
+
+[tool.ruff.format]
+quote-style = "single"

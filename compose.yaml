@@ -1,0 +1,30 @@
+services:
+  caddy:
+    image: caddy:2.10.2-alpine
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/caddy:/etc/caddy
+      - $PWD/srv:/srv
+      - caddy_config:/config
+      - caddy_data:/data
+      - logs:/var/log
+  xray:
+    image: ghcr.io/xtls/xray-core:25.10.15
+    restart: always
+    ports:
+      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8000:8000/udp"
+    volumes:
+      - $PWD/xray:/usr/local/etc/xray
+      - logs:/var/log
+
+volumes:
+  caddy_config:
+  caddy_data:
+  logs:
